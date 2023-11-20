@@ -989,7 +989,7 @@ int main(){
         else if (strcmp(userInput, "advice") == 0){
             board_gen_best_move(cb, USER_SIDE, CNCHESS_AI_SEARCH_DEPTH, &userAdviceMove);
             convert_move_to_str(&userAdviceMove, moveStr, MOVE_TO_STR_BUFFER_LEN);
-            printf("Maybe you can try: %s.\n", moveStr);
+            printf("Maybe you can try: %s, piece is %c.\n", moveStr, piece_get_char[cb->data[userAdviceMove.beginRow][userAdviceMove.beginCol]]);
         }
         else{
             if (check_input_is_a_move(userInput, strlen(userInput))){
