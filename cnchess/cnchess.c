@@ -89,24 +89,24 @@ enum Piece{
     PIECE_TOTAL_LEN    /* total number of pieces, you maybe never need this. */
 };
 
-const static char piece_get_char[] = {
+static const char piece_get_char[] = {
     /* cause #include<> just copy the content, so why not write those things to a txt file rather than writing in code ? */
     #include "chessBoardPieceChar.txt"
 };
 
-const static enum PieceSide piece_get_side[] = {
+static const enum PieceSide piece_get_side[] = {
     PS_UP, PS_UP, PS_UP, PS_UP, PS_UP, PS_UP, PS_UP,
     PS_DOWN, PS_DOWN, PS_DOWN, PS_DOWN, PS_DOWN, PS_DOWN, PS_DOWN,
     PS_EXTRA, PS_EXTRA
 };
 
-const static enum PieceType piece_get_type[] = {
+static const enum PieceType piece_get_type[] = {
     PT_PAWN, PT_CANNON, PT_ROOK, PT_KNIGHT, PT_BISHOP, PT_ADVISOR, PT_GENERAL,
     PT_PAWN, PT_CANNON, PT_ROOK, PT_KNIGHT, PT_BISHOP, PT_ADVISOR, PT_GENERAL,
     PT_EMPTY, PT_OUT
 };
 
-const static enum PieceSide piece_side_get_reverse_side[] = {
+static const enum PieceSide piece_side_get_reverse_side[] = {
     PS_DOWN,     /* upper side reverse is down. */
     PS_UP,       /* down side reverse is up. */
     PS_EXTRA     /* extra remains extra. */
@@ -116,7 +116,7 @@ const static enum PieceSide piece_side_get_reverse_side[] = {
 	every piece's value. 
 	upper side piece's value is negative, down side is positive. 
 */
-const static int piece_get_value[] = {
+static const int piece_get_value[] = {
     #include "chessBoardPieceValue.txt"
 };
 
@@ -124,7 +124,7 @@ const static int piece_get_value[] = {
 	every piece's position value on the chess board. 
 	upper side piece's value is negative, down side is positive. 
 */
-const static int piece_get_pos_value[][BOARD_ACTUAL_ROW_LEN][BOARD_ACTUAL_COL_LEN] = {
+static const int piece_get_pos_value[][BOARD_ACTUAL_ROW_LEN][BOARD_ACTUAL_COL_LEN] = {
     #include "chessBoardPosValue.txt"
 };
 
@@ -132,21 +132,21 @@ const static int piece_get_pos_value[][BOARD_ACTUAL_ROW_LEN][BOARD_ACTUAL_COL_LE
     a default chess board, used as a template for new board.
     P_EO is used here for speeding up rules checking.
 */
-const static enum Piece CHESS_BOARD_DEFAULT_TEMPLATE[BOARD_ROW_LEN][BOARD_COL_LEN] = {
-    P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO,
-    P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO,
-    P_EO, P_EO, P_UR, P_UN, P_UB, P_UA, P_UG, P_UA, P_UB, P_UN, P_UR, P_EO, P_EO,
-    P_EO, P_EO, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EO, P_EO,
-    P_EO, P_EO, P_EE, P_UC, P_EE, P_EE, P_EE, P_EE, P_EE, P_UC, P_EE, P_EO, P_EO,
-    P_EO, P_EO, P_UP, P_EE, P_UP, P_EE, P_UP, P_EE, P_UP, P_EE, P_UP, P_EO, P_EO,
-    P_EO, P_EO, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EO, P_EO,
-    P_EO, P_EO, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EO, P_EO,
-    P_EO, P_EO, P_DP, P_EE, P_DP, P_EE, P_DP, P_EE, P_DP, P_EE, P_DP, P_EO, P_EO,
-    P_EO, P_EO, P_EE, P_DC, P_EE, P_EE, P_EE, P_EE, P_EE, P_DC, P_EE, P_EO, P_EO,
-    P_EO, P_EO, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EO, P_EO,
-    P_EO, P_EO, P_DR, P_DN, P_DB, P_DA, P_DG, P_DA, P_DB, P_DN, P_DR, P_EO, P_EO,
-    P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO,
-    P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO
+static const enum Piece CHESS_BOARD_DEFAULT_TEMPLATE[BOARD_ROW_LEN][BOARD_COL_LEN] = {
+    { P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO },
+    { P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO },
+    { P_EO, P_EO, P_UR, P_UN, P_UB, P_UA, P_UG, P_UA, P_UB, P_UN, P_UR, P_EO, P_EO },
+    { P_EO, P_EO, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EO, P_EO },
+    { P_EO, P_EO, P_EE, P_UC, P_EE, P_EE, P_EE, P_EE, P_EE, P_UC, P_EE, P_EO, P_EO },
+    { P_EO, P_EO, P_UP, P_EE, P_UP, P_EE, P_UP, P_EE, P_UP, P_EE, P_UP, P_EO, P_EO },
+    { P_EO, P_EO, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EO, P_EO },
+    { P_EO, P_EO, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EO, P_EO },
+    { P_EO, P_EO, P_DP, P_EE, P_DP, P_EE, P_DP, P_EE, P_DP, P_EE, P_DP, P_EO, P_EO },
+    { P_EO, P_EO, P_EE, P_DC, P_EE, P_EE, P_EE, P_EE, P_EE, P_DC, P_EE, P_EO, P_EO },
+    { P_EO, P_EO, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EE, P_EO, P_EO },
+    { P_EO, P_EO, P_DR, P_DN, P_DB, P_DA, P_DG, P_DA, P_DB, P_DN, P_DR, P_EO, P_EO },
+    { P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO },
+    { P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO, P_EO },
 };
 
 /* move node, reprensent a move. */
