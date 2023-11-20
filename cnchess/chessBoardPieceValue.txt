@@ -1,0 +1,15 @@
+-20,       /* upper pawn. */
+-50,       /* upper cannon. */
+-100,      /* upper rook. */
+-50,       /* upper knight. */
+-10,       /* upper bishop. */
+-10,       /* upper advisor. */
+-10000,    /* upper general. */
+
++20,       /* down pawn. */
++50,       /* down cannon. */
++100,      /* down rook. */
++50,       /* down knight. */
++10,       /* down bishop. */
++10,       /* down advisor. */
++10000,    /* down general. */

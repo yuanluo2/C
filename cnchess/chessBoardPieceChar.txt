@@ -1,0 +1,18 @@
+'P',   /* upper pawn. */
+'C',   /* upper cannon. */
+'R',   /* upper rook. */
+'N',   /* upper knight. */
+'B',   /* upper bishop. */
+'A',   /* upper advisor. */
+'G',   /* upper general. */
+
+'p',   /* down pawn. */
+'c',   /* down cannon. */
+'r',   /* down rook. */
+'n',   /* down knight. */
+'b',   /* down bishop. */
+'a',   /* down advisor. */
+'g',   /* down general. */
+
+'.',   /* empty. */
+'#',   /* out of chess board. */
